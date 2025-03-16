@@ -45,14 +45,17 @@ func exists(name string) (bool, error) {
 }
 
 func InitApplication(application string) {
+	println("ZYP InitApplication path: ", application)
 	nhentai.InitNHentai(application)
 }
 
 func FlatInvoke(method string, params string) (string, error) {
+	println("ZYP FlatInvoke method: ", method, ", params: ", params)
 	return nhentai.FlatInvoke(method, params)
 }
 
 func EventNotify(notify EventNotifyHandler) {
+	println("ZYP EventNotify notify: ", notify)
 	// controller.EventNotify = notify.OnNotify
 }
 

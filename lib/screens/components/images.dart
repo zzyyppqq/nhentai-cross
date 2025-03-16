@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:io';
@@ -23,8 +25,9 @@ class NHentaiImageProvider extends ImageProvider<NHentaiImageProvider> {
 
   NHentaiImageProvider(this.url, {this.scale = 1.0});
 
+
   @override
-  ImageStreamCompleter load(key, DecoderCallback decode) {
+  ImageStreamCompleter loadImage(NHentaiImageProvider key, ImageDecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key),
       scale: key.scale,
@@ -40,7 +43,8 @@ class NHentaiImageProvider extends ImageProvider<NHentaiImageProvider> {
     assert(key == this);
     var path = await nHentai.cacheImageByUrlPath(url);
     var data = await File(path).readAsBytes();
-    return PaintingBinding.instance!.instantiateImageCodec(data);
+    return PaintingBinding.instance!.instantiateImageCodecWithSize(await ImmutableBuffer.fromUint8List(data));
+        // .instantiateImageCodec(data);
   }
 }
 

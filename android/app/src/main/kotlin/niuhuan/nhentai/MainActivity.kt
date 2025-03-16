@@ -183,7 +183,8 @@ class MainActivity: FlutterActivity() {
                 return path
             }
         }
-        return context!!.filesDir.absolutePath
+        return context!!.getExternalFilesDir(null)!!.absolutePath
+        //return context!!.filesDir.absolutePath
     }
 
     private fun androidGetExtendDirs(): String {

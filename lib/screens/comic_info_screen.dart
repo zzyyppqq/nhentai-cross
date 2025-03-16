@@ -153,7 +153,7 @@ class _ComicInfoScreenState extends State<ComicInfoScreen> {
           imageWidth = imageWidth / 2;
           var subColor = Color.alphaBlend(
             Colors.grey.shade500.withAlpha(80),
-            (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black),
+            (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black),
           );
           return ListView(
             children: [

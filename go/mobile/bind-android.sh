@@ -1,1 +1,1 @@
-gomobile bind -target=android/arm -o lib/Mobile.aar ./
+gomobile bind -target=android/arm64 -o lib/Mobile.aar ./

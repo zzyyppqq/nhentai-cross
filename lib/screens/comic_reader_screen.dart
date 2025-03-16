@@ -120,8 +120,13 @@ abstract class _ComicReaderState extends State<_ComicReader> {
 
   Future _onFullScreenChange(bool fullScreen) async {
     setState(() {
-      SystemChrome.setEnabledSystemUIOverlays(
-          fullScreen ? [] : SystemUiOverlay.values);
+      // 显示、隐藏状态栏和底部导航栏
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.manual,
+        overlays: fullScreen ? []: [SystemUiOverlay.top, SystemUiOverlay.bottom],
+      );
+      // SystemChrome.setEnabledSystemUIOverlays(
+      //     fullScreen ? [] : SystemUiOverlay.values);
       _fullScreen = fullScreen;
     });
   }
@@ -149,7 +154,11 @@ abstract class _ComicReaderState extends State<_ComicReader> {
   void dispose() {
     _readerControllerEvent.unsubscribe(_onPageControl);
     if (Platform.isAndroid || Platform.isIOS) {
-      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+      // SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.manual,
+        overlays: [],
+      );
     }
     super.dispose();
   }

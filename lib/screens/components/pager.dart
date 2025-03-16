@@ -78,6 +78,7 @@ class _PageState extends State<Pager> {
   @override
   Widget build(BuildContext context) {
     const int crossCount = 2;
+    // 首页瀑布列表
     return WaterfallFlow.builder(
       controller: _controller,
       physics: const AlwaysScrollableScrollPhysics(),

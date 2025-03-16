@@ -38,6 +38,7 @@ var client = &source.Client{
 func initClient() {
 	proxy, _ := properties.LoadProperty("proxy", "")
 	setProxy(proxy)
+	println("ZYP initClient set proxy: ", proxy)
 }
 
 func setProxy(proxyUrlString string) (string, error) {
@@ -101,6 +102,7 @@ func comicsBySearchRaw(params string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	println("ZYP comicsBySearchRaw params: ", params)
 	return cacheable(
 		fmt.Sprintf("COMICS_BY_SEARCH_RAW$%s$%d", paramsStruct.Raw, paramsStruct.Page),
 		time.Hour,

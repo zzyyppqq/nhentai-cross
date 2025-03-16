@@ -48,6 +48,7 @@ class NHentai {
 
   /// 获取漫画
   Future<ComicPageData> comicsBySearchRaw(String raw, int page) async {
+    // 调用go获取漫画
     return ComicPageData.fromJson(jsonDecode(
       await _flatInvoke("comicsBySearchRaw", {
         "raw": raw,

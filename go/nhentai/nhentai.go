@@ -22,16 +22,23 @@ func InitNHentai(documentDir string) {
 		return
 	}
 	initFlag = true
+	// 创建数据库目录
 	databaseDir := path.Join(documentDir, "database")
 	constant.ObtainDir(databaseDir)
+	// 创建数据库
 	properties.Init(databaseDir)
 	cache.Init(databaseDir)
 	active.Init(databaseDir)
+
+	// 创建cache目录
 	cachePath = path.Join(documentDir, "cache")
 	constant.ObtainDir(cachePath)
+	// 创建download目录
 	downloadPath = path.Join(documentDir, "download")
 	constant.ObtainDir(downloadPath)
+	// 初始化客户端
 	initClient()
+	// 开始下载
 	go initDownload()
 }
 

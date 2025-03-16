@@ -171,7 +171,7 @@ Future<String?> displayTextInputDialog(
                             fontSize: 12,
                             color: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.color
                                 ?.withOpacity(.5)),
                       ),
